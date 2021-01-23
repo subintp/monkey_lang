@@ -20,11 +20,11 @@ const (
 
 	// Operators
 	ASSIGN = "="
-	PLUS   = "+"
+	ADD    = "+"
 
 	// Delimeters
 	COMMA     = ","
-	SEMICOLON = ';'
+	SEMICOLON = ";"
 
 	LPAREN = "("
 	RPAREN = ")"
@@ -35,3 +35,11 @@ const (
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
 )
+
+// New - create new tocken
+func New(tokenType string, literal string) Token {
+	return Token{
+		Type:    Type(tokenType),
+		Literal: literal,
+	}
+}
