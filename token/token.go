@@ -36,10 +36,23 @@ const (
 	LET      = "LET"
 )
 
+var keywords = map[string]Type{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
 // New - create new tocken
 func New(tokenType string, literal string) Token {
 	return Token{
 		Type:    Type(tokenType),
 		Literal: literal,
 	}
+}
+
+// LookupIdent = check if identifier or keyword
+func LookupIdent(ident string) Type {
+	if token, ok := keywords[ident]; ok {
+		return token
+	}
+	return IDENT
 }
